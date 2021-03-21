@@ -14,6 +14,16 @@ And the front-end:
 
 cd client; npm i; npm start
 
+### Routes
+
+The client should be running on http://localhost:3000/
+
+The initial list property route is `/`
+Clicking on any property card's 'View this property' button will take you to the details page, `/properties/1`
+To get to the Add Property Form you should browse to: `/admin/add`
+
+There is no authentication
+
 ## Notes
 
 ### My Approach
@@ -40,10 +50,14 @@ There are quite a few parts of the app without good error handling. If the serve
 
 There needs to be unit & functional tests added, but I decided this was out-of-scope given the time I had taken to get to this point.
 
+Form validation on the add property form isvirtually non-existent, there is some example validation on the price field to show an implementtion, although I would probably want to use a library like Yup here. I would also have allowed for the editing of Properties, which would have been implemented using the same view model, and would just have needed a conditional call to load the data if we had the ID. I would then have used a `PUT` verb for idempotent updates on the server. 
+
+User authentication would be essential for the admin part of the site. This could be implemented by receiving claims via a JWT token, and a simple wrapper on the Route component to conditionally display routes under admin. This could easily be circumvented in the FE, so would need to be paired with a Bearer token sent to API calls to only return restricted data to those that should be able to view it. Likewise you would restrict any endpoints that pushed new data.
+
 ### Further work
 
 I would certainly add storybook to this project, or actually look to split the common components into a new library with storybook and have the UX library consistent across the site.
 
-I kept the detail and the project card model seperate but derived from the same base model because I could see the details page getting much more properties in the future, which were likely not going to be needed for the card.
+I kept the detail and the project card model seperate but derived from the same base model because I could see the details page getting many more properties in the future, which were likely not going to be needed for the card.
 
 I also started to build out Pagination, and I could see filters working in a similar way. The idaa would be that these pagination and filtering models could live in a state, or provided as context via a provider, and then brought into the client via hooks to help build the get request, and used in the compoents to help easily display selected filters, and current page / total results. They should be built similar to middleware, so that data is just piped into them if they exist and are in use, and if not the system works regardless.
