@@ -28,7 +28,7 @@ There is no authentication
 
 ### My Approach
 
-I started off getting the ideas on a piece of paper; I've add a picture of these notes to the root of the project [initial-notes.jpg]. Really I just wanted to get a feel for what components I would need so that I could structure the project accordingly. This stage took about 15 minutes.
+I started off getting the ideas on a piece of paper; I've add a [picture of these notes](initial-notes.jpg) to the root of the project. Really I just wanted to get a feel for what components I would need so that I could structure the project accordingly. This stage took about 15 minutes.
 
 The next step for me, was to build the React pages, getting the UI in place and discovering some extra fields I would need in DB. After I had a rough prototype in place, I did a quick round of refactoring and moved some components that had been used multiple times into a common folder so they could be better re-used. I chose to add them with an atomic design naimg convention, to encourage this approach for re-use. This stage took around 45 minutes.
 
